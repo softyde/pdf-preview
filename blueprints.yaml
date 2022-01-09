@@ -3,15 +3,15 @@ slug: pdf-preview
 type: plugin
 version: 0.1.0
 description: Creates thumbnail previews of uploaded pdf files
-icon: plug
+icon: file-pdf-o
 author:
   name: Philipp Anné
-  email: philipp@annee.de
-homepage: https://github.com/philipp-ann/grav-plugin-pdf-preview
-demo: http://demo.yoursite.com
+  email: softyde@annee.de
+homepage: https://github.com/softyde/pdf-preview
+demo: https://egelpfuhlschule.de
 keywords: grav, plugin, etc
-bugs: https://github.com/philipp-ann/grav-plugin-pdf-preview/issues
-docs: https://github.com/philipp-ann/grav-plugin-pdf-preview/blob/develop/README.md
+bugs: https://github.com/softyde/pdf-preview/issues
+docs: https://github.com/softyde/pdf-preview#readme
 license: MIT
 
 dependencies:
@@ -30,7 +30,3 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    text_var:
-      type: text
-      label: PLUGIN_PDF_PREVIEW.TEXT_VARIABLE
-      help: PLUGIN_PDF_PREVIEW.TEXT_VARIABLE_HELP
