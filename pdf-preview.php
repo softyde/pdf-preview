@@ -96,7 +96,7 @@ class PdfPreviewPlugin extends Plugin
                 continue;
             }
 
-            $cmd = "/usr/bin/convert -thumbnail  \"200^>\" -background white -alpha remove -crop 200x200+0+0 \"{$sourcePath}\"[0] \"{$targetPath}\"";
+            $cmd = "/usr/bin/convert -thumbnail  \"144^>\" -background white -alpha remove -crop 144x200+0+0 \"{$sourcePath}\"[0] \"{$targetPath}\"";
             // Could run in background but leads to problems with page caching.
             // Processing in foreground might lead to problems with long running php scripts
             // $cmd .= ' > /dev/null &';
