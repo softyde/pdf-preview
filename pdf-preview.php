@@ -22,8 +22,6 @@ class PdfPreviewPlugin extends Plugin
      */
     public static function getSubscribedEvents(): array
     {
-//        $this->grav['debugger']->addMessage('getSubsribedEvents called');
-
         return [
             'onPluginsInitialized' => [
                 // Uncomment following line when plugin requires Grav < 1.7
@@ -48,7 +46,7 @@ class PdfPreviewPlugin extends Plugin
      */
     public function onPluginsInitialized(): void
     {
-        $this->grav['debugger']->addMessage('onPluginsInitialized called 2');
+        $this->grav['debugger']->addMessage('PDF Preview initialized');
 
         // Enable the main events we are interested in
         $this->enable([
@@ -56,7 +54,10 @@ class PdfPreviewPlugin extends Plugin
             'onAdminAfterAddMedia' => ['onAdminAfterAddMedia', 0]
         ]);
     }
-    
+
+    /**
+     * Checks if the passed filename is somehow foolish
+     */     
     private function isHarmful($filename): bool 
     {
         foreach (array('"', '\'', '\\', '/', '&', ':') as $char) 
@@ -70,15 +71,12 @@ class PdfPreviewPlugin extends Plugin
         return false;
     }
     
+    /**
+     * Is called when a page is saved and does all the work.
+     */ 
     public function onAdminSave($event): void 
     {
-
-
-        $this->grav['log']->info('LOG ----');
-
         $page = $event['object'];
-//        $this->grav['log']->info(print_r($page, true));     
-//        dump($page);
 
         $pagePath = $page->path();
         
@@ -99,24 +97,18 @@ class PdfPreviewPlugin extends Plugin
             }
 
             $cmd = "/usr/bin/convert -thumbnail  \"200^>\" -background white -alpha remove -crop 200x200+0+0 \"{$sourcePath}\"[0] \"{$targetPath}\"";
+            // Could run in background but leads to problems with page caching.
+            // Processing in foreground might lead to problems with long running php scripts
             // $cmd .= ' > /dev/null &';
 
             $this->grav['log']->info('Processing ' . $sourcePath . " as pdf file to {$targetPath}");
             $result = exec($cmd);   
-            $this->grav['log']->info("Done processing");
         }
-        
-        
-        
     }
     
     public function onAdminAfterAddMedia($event): void 
     {
-        
-        $this->grav['log']->info(print_r($event, true));     
-        dump($event);
-        
-        $this->grav['admin']->setMessage('Yeah', 'info');
+        // Might be a better place to implement the stuff from above        
     }
     
 }
