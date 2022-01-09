@@ -1,0 +1,4 @@
+en:
+  PLUGIN_PDF_PREVIEW:
+    TEXT_VARIABLE: Text Variable
+    TEXT_VARIABLE_HELP: Text to add to the top of a page

@@ -1,0 +1,29 @@
+{
+  "name": "philipp-ann/pdf-preview",
+  "type": "grav-plugin",
+  "description": "Creates thumbnail previews of uploaded pdf files",
+  "keywords": ["plugin"],
+  "homepage": "https://github.com/philipp-ann/grav-plugin-pdf-preview",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Philipp Anné",
+      "email": "philipp@annee.de",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grav\\Plugin\\PdfPreview\\": "classes/"
+    },
+    "classmap":  ["pdf-preview.php"]
+  },
+  "config": {
+    "platform": {
+      "php": "7.1.3"
+    }
+  }
+}
