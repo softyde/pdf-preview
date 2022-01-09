@@ -50,8 +50,8 @@ class PdfPreviewPlugin extends Plugin
 
         // Enable the main events we are interested in
         $this->enable([
-            'onAdminSave' => ['onAdminSave', 0],
-            'onAdminAfterAddMedia' => ['onAdminAfterAddMedia', 0]
+            'onAdminSave' => ['onAdminSave', 0]
+            // 'onAdminAfterAddMedia' => ['onAdminAfterAddMedia', 0]
         ]);
     }
 
@@ -101,14 +101,16 @@ class PdfPreviewPlugin extends Plugin
             // Processing in foreground might lead to problems with long running php scripts
             // $cmd .= ' > /dev/null &';
 
-            $this->grav['log']->info('Processing ' . $sourcePath . " as pdf file to {$targetPath}");
+            $this->grav['log']->info("Processing {$sourcePath} as pdf file to {$targetPath}");
             $result = exec($cmd);   
         }
     }
     
+    /*
     public function onAdminAfterAddMedia($event): void 
     {
         // Might be a better place to implement the stuff from above        
     }
+    */
     
 }
