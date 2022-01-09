@@ -8,6 +8,8 @@ This plugin requires a running version of the ImageMagick binaries in /usr/bin.
 
 The current implementation does not work on Windows installations.
 
+This plugin belongs to my project "Website for Egelpfuhl Elementary School in Templin" and may not make much sense for others.
+
 ## Installation
 
 Installing the Pdf Preview plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
