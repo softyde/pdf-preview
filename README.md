@@ -1,8 +1,12 @@
 # Pdf Preview Plugin
 
-**This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
+The **Pdf Preview** Plugin is an extension for [Grav CMS](http://github.com/getgrav/grav). It automatically creates preview images (.png) of uploaded PDF files.
 
-The **Pdf Preview** Plugin is an extension for [Grav CMS](http://github.com/getgrav/grav). Creates thumbnail previews of uploaded pdf files
+## Requirements
+
+This plugin requires a running version of the ImageMagick binaries in /usr/bin.
+
+The current implementation does not work on Windows installations.
 
 ## Installation
 
@@ -44,13 +48,19 @@ Note that if you use the Admin Plugin, a file with your configuration named pdf-
 
 ## Usage
 
-**Describe how to use the plugin.**
+Just drop the files to your /plugins directory.
 
-## Credits
+The plugin creates a 200x200 pixel preview image of the first page for each PDF file (identified by MIME type) when saving a page.
+The file is stored in the folder of the respective page and has the filename "__preview.[original name].png".
 
-**Did you incorporate third-party code? Want to thank somebody?**
+(The theme I use uses images whose names start with two underscores only as previews in lists and does not display them on the respective detail page).
+
+Theoretically, you could also perform the action directly when uploading a PDF file (onAdminAfterAddMedia). I was not quite clear if and how this has influence on Grav's caching. 
+The current implementation is a bit of a kludge.
+
+For security reasons, all PDF files whose names are somehow suspicious are ignored during processing.
 
 ## To Do
 
 - [ ] Future plans, if any
-
+- [ ] Take over world domination
